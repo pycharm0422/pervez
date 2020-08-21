@@ -1,0 +1,184 @@
+{% include 'pervez/navbar.html' %}
+
+
+
+
+
+
+<section class="text-gray-500 bg-gray-900 body-font overflow-hidden">
+    <div class="container px-5 pt-24 pb-64 mx-auto">
+        <div class="flex flex-col text-center w-full mb-20">
+            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-200">Chapter Notes</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn
+                asymmetrical.</p>
+
+        </div>
+        <div class="flex flex-wrap -m-4">
+            <div class="p-4 xl:w-1/4 md:w-1/2 w-full">
+                <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
+                    <h1 class="text-5xl text-gray-200 pb-4 mb-4 border-b border-gray-200 leading-none">Physics</h1>
+                    Questions <br><br>
+                    {% for qna in que_ans %}
+                    {% if qna.sub == sub1 %}
+                    <p class="flex items-center text-gray-600 mb-2">
+                        <span
+                            class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                        </span>
+                        <a href="{{ qna.question.url }}" download
+                            class="text-green-700 hover:text-indigo-700">{{ qna.question_desc }}</a><br>
+                    </p>
+
+                    {% endif %}
+                    {% endfor %} <br>
+                    <hr><br>
+                    <hr><br>
+                    Answesrs <br><br>
+                    {% for qna in que_ans %}
+                    {% if qna.sub == sub1 %}
+                    <p class="flex items-center text-gray-600 mb-2">
+                        <span
+                            class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                        </span>
+                        <a href="{{ qna.answers.url }}" download
+                            class="text-green-700 hover:text-indigo-700">{{ qna.answer_desc }}</a>
+                        <br>
+                    </p>
+                    {% endif %}
+                    {% endfor %}  <br> 
+                </div>
+            </div>
+            <div class="p-4 xl:w-1/4 md:w-1/2 w-full">
+                <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
+                    <h1 class="text-5xl text-gray-200 pb-4 mb-4 border-b border-gray-200 leading-none">Chemistry</h1>
+                    Questions <br><br>
+                    {% for qna in que_ans %}
+                    {% if qna.sub == sub2 %}
+                    <p class="flex items-center text-gray-600 mb-2">
+                        <span
+                            class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                        </span>
+                        <a href="{{ qna.question.url }}" download
+                            class="text-green-700 hover:text-indigo-700">{{ qna.question_desc }}</a><br>
+                    </p>
+
+                    {% endif %}
+                    {% endfor %} <br> 
+                    <hr><br>
+                    <hr><br>
+                    Answesrs <br><br>
+                    {% for qna in que_ans %}
+                    {% if qna.sub == sub2 %}
+                    <p class="flex items-center text-gray-600 mb-2">
+                        <span
+                            class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                        </span>
+                        <a href="{{ qna.answers.url }}" download
+                            class="text-green-700 hover:text-indigo-700">{{ qna.answer_desc }}</a>
+                        <br>
+                    </p>
+                    {% endif %}
+                    {% endfor %} <br> 
+                    <p class="text-xs text-gray-500 mt-3">Try your best</p>
+                </div>
+            </div>
+            <div class="p-4 xl:w-1/4 md:w-1/2 w-full">
+                <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
+                    <h1 class="text-5xl text-gray-200 pb-4 mb-4 border-b border-gray-200 leading-none">Biology</h1>
+                    Questions <br><br>
+                    {% for qna in que_ans %}
+                    {% if qna.sub == sub3 %}
+                    <p class="flex items-center text-gray-600 mb-2">
+                        <span
+                            class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                        </span>
+                        <a href="{{ qna.question.url }}" download
+                            class="text-green-700 hover:text-indigo-700">{{ qna.question_desc }}</a><br>
+                    </p>
+
+                    {% endif %}
+                    {% endfor %} <br> 
+                    <hr><br>
+                    <hr><br>
+                    Answesrs <br><br>
+                    {% for qna in que_ans %}
+                    {% if qna.sub == sub3 %}
+                    <p class="flex items-center text-gray-600 mb-2">
+                        <span
+                            class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                        </span>
+                        <a href="{{ qna.answers.url }}" download
+                            class="text-green-700 hover:text-indigo-700">{{ qna.answer_desc }}</a>
+                        <br>
+                    </p>
+                    {% endif %}
+                    {% endfor %} <br> 
+                </div>
+            </div>
+            <div class="p-4 xl:w-1/4 md:w-1/2 w-full">
+                <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
+                    <h1 class="text-5xl text-gray-200 pb-4 mb-4 border-b border-gray-200 leading-none">Maths</h1>
+                    Questions <br><br>
+                    {% for qna in que_ans %}
+                    {% if qna.sub == sub4 %}
+                    <p class="flex items-center text-gray-600 mb-2">
+                        <span
+                            class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                        </span>
+                        <a href="{{ qna.question.url }}" download
+                            class="text-green-700 hover:text-indigo-700">{{ qna.question_desc }}</a><br>
+                    </p>
+
+                    {% endif %}
+                    {% endfor %} <br>
+                    <hr><br>
+                    <hr><br>
+                    Answesrs <br><br>
+                    {% for qna in que_ans %}
+                    {% if qna.sub == sub4 %}
+                    <p class="flex items-center text-gray-600 mb-2">
+                        <span
+                            class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                        </span>
+                        <a href="{{ qna.answers.url }}" download
+                            class="text-green-700 hover:text-indigo-700">{{ qna.answer_desc }}</a>
+                        <br>
+                    </p>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

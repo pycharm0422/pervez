@@ -7,16 +7,16 @@
 <section class="text-gray-500 bg-gray-900 body-font overflow-hidden">
   <div class="container px-5 py-24 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <iframe width="1000" height="600"  id="vid_frame" src="https://www.youtube.com/embed/-AOPAqxAFJk" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+      <h1 class="text-white text-3xl title-font font-medium mb-1">{{chap_name}}</h1><br>
+      <iframe width="1000" height="600"  id="vid_frame" src="{{url}}}" frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      
       <div class="lg:w-1/1 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-        <h1 class="text-white text-3xl title-font font-medium mb-1">{{subtop.chapter}}</h1>
+        
         {% for st in subtop %}
-
         {% video st.vedio as my_video %}
-
-          <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='{{ my_video.url }}'">
+        
+        <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='{{ my_video.url }}'">
 
             <h2 class="text-lg title-font text-gray-300 tracking-widest"> {{ st.sub_topic }}  </h2><br>
           </a>

@@ -1,70 +1,99 @@
 from django.shortcuts import render, redirect
 from .models import *
 
+
+                                                            #HOME PAGE, CLASSES 
 def home(request):
     notes = Notes.objects.all()
+    classes = Cls.objects.all()
+    recommendations = Recommendations.objects.all()
+    blogs = Blogs.objects.all()
+
     context = {
-        'notes':notes
+        'notes':notes,
+        'classes':classes,
+        'recommendations':recommendations,
+        'blogs':blogs,
+
     }
     return render(request, 'pervez/home.html', context)
 
-
+                                                                    #NOTES 
 def Notess(request, cls):
     cl = Cls.objects.get(clss=cls)
-    subject = Subject.objects.get(sub_type='Physics')
-    subject2 = Subject.objects.get(sub_type='Chemistry')
-    subject3 = Subject.objects.get(sub_type='Biology')
-    subject4 = Subject.objects.get(sub_type='Maths')
+    subjects = Subject.objects.all()
     notes = cl.notes_set.all()
 
-    # if request.method == 'POST':
-    #     return redirect('')
     context = {
         'notes':notes,
-        'subject':subject,
-        'subject2':subject2,
-        'subject3':subject3,
-        'subject4':subject4,
+        'subjects':subjects,
+
     }
     return render(request, 'pervez/notes.html', context)
 
-def notes_page(request):
-    return render(request, 'pervez/notes_page.html')
 
+                                                                # NOTES PAGE
+
+def notes_page(request):
+    classes = Cls.objects.all()
+    context = {
+        'classes':classes,
+    }
+    return render(request, 'pervez/notes_page.html', context)
+
+                                                                # PAPER PAGE
+
+def paper_page(request):
+    classes = Cls.objects.all()
+    context = {
+        'classes':classes,
+    }
+    return render(request, 'pervez/paper_page.html', context)
+
+
+                                                            #QUESTION AND ANSWERS
 def question_answers(request, cls):
     cl = Cls.objects.get(clss=cls)
-    sub1 = Subject.objects.get(sub_type='Physics')
-    sub2 = Subject.objects.get(sub_type='Chemistry')
-    sub3 = Subject.objects.get(sub_type='Biology')
-    sub4 = Subject.objects.get(sub_type='Maths')
-    que_ans = cl.questionanswer_set.all()
-
+    subjects = Subject.objects.all()
+    questionsanswers = QuestionAnswer.objects.filter(clss=cl)
+    # questionsanswers = QuestionAnswer.objects.all()
     context = {
-        'que_ans':que_ans,
-        'sub1':sub1,
-        'sub2':sub2,
-        'sub3':sub3,
-        'sub4':sub4,
-        
+        'questionsanswers':questionsanswers,
+        'subjects':subjects,
     }
 
     return render(request, 'pervez/question&answers.html', context)
 
+
+                                                            #LECTURES SUBJECTS 
 def lectures_subjects(request, cls):
-    lectures = Lectures.objects.filter(clss=cls)
+    subjects = Subject.objects.all()
+    # subjects = ['Physics', 'Chemistry', 'Biology', 'Maths']
+    # lectures = Lectures.objects.filter(clss=cls)
+    bio = Subject.objects.get(sub_type__contains="Biology")
+    lectures = Lectures.objects.filter(clss__clss = cls)
     context = {
-        'lectures':lectures
+        'lectures':lectures,
+        'subjects':subjects,
+        'bio':bio,
     }
     return render(request, 'pervez/lectures_subject.html', context)
 
 
-def per_video(request, sub, chap_name):
+def per_video(request, pk, chap_name):
     
-    subtop = SubTopic.objects.filter(chapter__sub__contains=sub).filter(chapter__chapter__contains=chap_name)
-    length = len(subtop)
+    subtop = SubTopic.objects.filter(chapter__sub__id=pk).filter(chapter__chapter__contains=chap_name)
+    url_first = str(subtop[0].vedio)+"?wmode=opaque"
+    url_first = url_first[0:23] +"/embed/" + url_first[32:]
+    print(url_first)
+    chap_name = chap_name
+    lengths = len(subtop)
+    print(lengths)
     context = {
         'subtop':subtop,
-        'length':length
+        'lengths':lengths,
+        'chap_name':chap_name,
+        'url':url_first,
     }
 
     return render(request, 'pervez/indi_chap.html', context)

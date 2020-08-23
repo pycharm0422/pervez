@@ -2,8 +2,9 @@ from django.db import models
 from embed_video.fields import EmbedVideoField
 
 class Cls(models.Model):
+    img = models.CharField(max_length=200, null=True, blank=True)
+    quote = models.TextField(null=True, blank=True)
     clss = models.IntegerField(null=True, blank=True)
-    # sub = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return str(self.clss)
@@ -36,30 +37,11 @@ class QuestionAnswer(models.Model):
     def __str__(self):
         return "qna "+ str(self.sub) + " " + str(self.clss)
 
-# class Lectures(models.Model):
-#     clss = models.ForeignKey(Cls, on_delete=models.CASCADE, null=True)
-#     sub = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True)
-#     chaper = models.CharField(null=True, blank=True,max_length=200)
-#     link
-
-
-
 
 class Lectures(models.Model):
-    subject = (
-        ('Physics','Physics'),
-        ('Chemistry','Chemistry'),
-        ('Maths','Maths'),
-    )
-    clsses = (
-        (7,7),
-        (8,8),
-        (9,9),
-        (10,10),
-    )
     chapter = models.CharField(max_length=200, null=True, blank=True)
-    clss = models.IntegerField(null=True, choices=clsses, blank=True)
-    sub = models.CharField(max_length=200, choices=subject, null=True)
+    clss = models.ForeignKey(Cls, on_delete=models.CASCADE, null=True,  blank=True)
+    sub = models.ForeignKey(Subject, on_delete=models.CASCADE, max_length=200, null=True)
 
     def __str__(self):
         return self.chapter + " " + str(self.clss)
@@ -67,7 +49,22 @@ class Lectures(models.Model):
 class SubTopic(models.Model):
     chapter = models.ForeignKey(Lectures, null=True, on_delete=models.CASCADE)
     sub_topic = models.CharField(max_length=200, null=True, blank=True)
-    vedio = EmbedVideoField(null=True)
+    vedio = EmbedVideoField(null=True, blank=True)
 
     def __str__(self):
         return str(self.chapter) + self.sub_topic
+
+class Recommendations(models.Model):
+    title = models.CharField(max_length=200, null=True)
+    vedio = EmbedVideoField(null=True, blank=True)
+
+    def __str__(self):
+        return str(self.title) + 'Vedio'
+
+class Blogs(models.Model):
+    title = models.CharField(max_length=200)
+    short_content = models.TextField(null=True)
+    url = models.CharField(max_length=500)
+
+    def __str__(self):
+        return str(self.title) + " - Blog"

@@ -24,9 +24,10 @@ SECRET_KEY = '@vsm9c3+4nu8+jr*x)%5!m%e+#p80_2xk@-l-*2v3k@&k5@6zl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
-DEBUG = True
-
-ALLOWED_HOSTS = []
+# DEBUG = True
+DEBUG = False
+ALLOWED_HOSTS = ['quant-metamorphs.herokuapp.com', '127.0.0.1']
+# ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['quant-meta.herokuapp.com', '127.0.0.1']
 
 
@@ -122,7 +123,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

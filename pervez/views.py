@@ -50,16 +50,27 @@ def paper_page(request):
     }
     return render(request, 'pervez/paper_page.html', context)
 
+                                                                #LECTURES PAGE 
+
+def lecture_page(request):
+    classes = Cls.objects.all()
+    context = {
+        'classes':classes,
+    }
+    return render(request, 'pervez/lectures_page.html', context)
+
 
                                                             #QUESTION AND ANSWERS
 def question_answers(request, cls):
     cl = Cls.objects.get(clss=cls)
     subjects = Subject.objects.all()
-    questionsanswers = QuestionAnswer.objects.filter(clss=cl)
-    # questionsanswers = QuestionAnswer.objects.all()
+    # questionsanswers = QuestionAnswer.objects.filter(clss=cl)
+    
+    questionsanswers = QuestionAnswer.objects.all()
     context = {
         'questionsanswers':questionsanswers,
         'subjects':subjects,
+        'cl':cl
     }
 
     return render(request, 'pervez/question&answers.html', context)
@@ -71,7 +82,7 @@ def lectures_subjects(request, cls):
     # subjects = ['Physics', 'Chemistry', 'Biology', 'Maths']
     # lectures = Lectures.objects.filter(clss=cls)
     bio = Subject.objects.get(sub_type__contains="Biology")
-    lectures = Lectures.objects.filter(clss__clss = cls)
+    lectures = Lecture_chapter.objects.filter(clss__clss = cls)
     context = {
         'lectures':lectures,
         'subjects':subjects,

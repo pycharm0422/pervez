@@ -38,7 +38,7 @@ class QuestionAnswer(models.Model):
         return "qna "+ str(self.sub) + " " + str(self.clss)
 
 
-class Lectures(models.Model):
+class Lecture_chapter(models.Model):
     chapter = models.CharField(max_length=200, null=True, blank=True)
     clss = models.ForeignKey(Cls, on_delete=models.CASCADE, null=True,  blank=True)
     sub = models.ForeignKey(Subject, on_delete=models.CASCADE, max_length=200, null=True)
@@ -47,7 +47,7 @@ class Lectures(models.Model):
         return self.chapter + " " + str(self.clss)
 
 class SubTopic(models.Model):
-    chapter = models.ForeignKey(Lectures, null=True, on_delete=models.CASCADE)
+    chapter = models.ForeignKey(Lecture_chapter, null=True, on_delete=models.CASCADE)
     sub_topic = models.CharField(max_length=200, null=True, blank=True)
     vedio = EmbedVideoField(null=True, blank=True)
 

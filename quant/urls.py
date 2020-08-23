@@ -27,6 +27,7 @@ urlpatterns = [
     path('papers/<int:cls>/', auth_views.question_answers, name='q-n-a'),
     path('lectures/<int:cls>/', auth_views.lectures_subjects, name='lec-sub'),
     path('paper_page/', auth_views.paper_page, name='paper-page'),
+    path('lecture_page/', auth_views.lecture_page, name='lecture-page'),
     # path('vidio_lec/<str:sub>/<str:chap_name>/', auth_views.per_video, name='individual-chapter'),
     path('vidio_lec/<int:pk>/<str:chap_name>/', auth_views.per_video, name='individual-chapter'),
     # path('notes/', auth_views.Notess, name='notes'),

@@ -23,6 +23,13 @@
                         {% endif %}
                         {% endfor %}
                         <br><hr><br>
+                        {% for question in questionsanswers %}
+                        {% if question.clss == cl %}
+                            {% if question.sub == sub %}
+                                <a href="{{ question.answers.url }}" download class="text-green-700 hover:text-indigo-700">{{ question.answer_desc }}</a>
+                            {% endif %}
+                        {% endif %}
+                        {% endfor %}
                    
                 </div>
             </div>

@@ -33,10 +33,8 @@ DEBUG = False
 ALLOWED_HOSTS = ['quant-metamorphs.herokuapp.com', '127.0.0.1']
 # ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['quant-meta.herokuapp.com', '127.0.0.1']
->>>>>>> 02728ae4f5d9befecb11184a473ed16fb6f85606
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['quant-metamorphs.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
